@@ -126,7 +126,8 @@ class _Add_profile_dataState extends State<Add_profile_data> {
                     onPressed: () async {
                       firebase.loading = true;
                       await saveCroppedImage();
-                      await firebase.uploadFile(imagefile: file);
+                      await firebase.uploadFile(
+                          imagefile: file, age: age.text, name: name.text);
                       firebase.loading = false;
 
                       Navigator.push(

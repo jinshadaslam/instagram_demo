@@ -9,7 +9,10 @@ class FirebaseConnect extends ChangeNotifier {
   bool loading = false;
   String downloadURL = '';
 
-  Future<void> uploadFile({required File imagefile}) async {
+  Future<void> uploadFile(
+      {required File imagefile,
+      required String name,
+      required String age}) async {
     final fileName = basename(imagefile.path);
     final destination = 'files/$fileName';
     try {
