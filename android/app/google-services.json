@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "161864337509-dhb7t2rg5rh4j8111qlg3cj0d16q3uul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.instagram_demo",
+            "certificate_hash": "8195890db8a7a857c9bde47e03bb2d9bc665e9a8"
+          }
+        },
+        {
           "client_id": "161864337509-a20tc5lrls3tr8osh9m4s6dafot1f6t5.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,13 @@
             {
               "client_id": "161864337509-a20tc5lrls3tr8osh9m4s6dafot1f6t5.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "161864337509-6kgvndqk10f21178vc1src3um2b6eep6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.instagramDemo.RunnerTests"
+              }
             }
           ]
         }

@@ -85,7 +85,7 @@ class Fire_auth {
       print('token: ${user?.providerData}');
       print('token: ${user?.multiFactor}');
 
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
       );

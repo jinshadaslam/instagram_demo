@@ -130,7 +130,7 @@ class _Add_profile_dataState extends State<Add_profile_data> {
                           imagefile: file, age: age.text, name: name.text);
                       firebase.loading = false;
 
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => Botomnavigation()),
