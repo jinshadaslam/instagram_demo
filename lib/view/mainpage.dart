@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:instagram_demo/view/adddata.dart';
 import 'package:instagram_demo/view/home.dart';
 import 'package:instagram_demo/view/profile.dart';
+
 import 'package:instagram_demo/view/reels.dart';
 import 'package:instagram_demo/view/search.dart';
 import 'package:instagram_demo/view_modal.dart/pagechangeprovider.dart';
@@ -20,9 +22,11 @@ class Botomnavigation extends StatefulWidget {
 
 class _BotomnavigationState extends State<Botomnavigation> {
   List<BottomNavigationBarItem> buildBottomNavBarItems() {
+    final firebase = Provider.of<FirebaseConnect>(context);
+
     Themechange theme = Provider.of<Themechange>(context);
     final pages = Provider.of<Pagechange>(context);
-    final firebase = Provider.of<FirebaseConnect>(context);
+
     return [
       BottomNavigationBarItem(
           icon: Icon(Custum_icons.home, color: theme.textcolor), label: ''),
@@ -44,11 +48,27 @@ class _BotomnavigationState extends State<Botomnavigation> {
             color: theme.textcolor,
           ),
           label: ''),
-      BottomNavigationBarItem(
-          icon:
-              CircleAvatar(backgroundImage: NetworkImage(firebase.downloadURL)),
-          label: ''),
+      BottomNavigationBarItem(icon: profileicon(firebase), label: ''),
     ];
+  }
+
+  Widget profileicon(FirebaseConnect firebase) {
+    if (firebase.userdata?.url == null) {
+      return FutureBuilder(
+        future: firebase.getUserData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else {
+            return CircleAvatar(
+                backgroundImage: NetworkImage(firebase.userdata!.url));
+          }
+        },
+      );
+    } else {
+      return CircleAvatar(
+          backgroundImage: NetworkImage(firebase.userdata!.url));
+    }
   }
 
   @override

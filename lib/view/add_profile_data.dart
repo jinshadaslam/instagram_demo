@@ -128,6 +128,7 @@ class _Add_profile_dataState extends State<Add_profile_data> {
                       await saveCroppedImage();
                       await firebase.uploadFile(
                           imagefile: file, age: age.text, name: name.text);
+
                       firebase.loading = false;
 
                       Navigator.pushReplacement(

@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snap) {
             if (snap.data != null || snap.hasData) {
-              return Add_profile_data();
+              return Botomnavigation();
             }
             return login_page();
           }),
