@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 // import 'dart:js';
 import 'package:provider/provider.dart';
 
@@ -36,13 +38,14 @@ class Widgets {
       height: 50,
       width: 350,
       child: TextField(
+        keyboardType:
+            labeltext == 'age' ? TextInputType.number : TextInputType.text,
         controller: textEditer,
         style: TextStyle(color: theme.textcolor),
         cursorColor: theme.textcolor,
         decoration: InputDecoration(
           filled: true,
           fillColor: theme.textfieldfill,
-          //
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: theme.textFieldborder),
               borderRadius: BorderRadius.circular(6)),

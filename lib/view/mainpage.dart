@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:instagram_demo/view/adddata.dart';
 import 'package:instagram_demo/view/home.dart';
-import 'package:instagram_demo/view/profile.dart';
+import 'package:instagram_demo/view/profilepages/profile.dart';
 
 import 'package:instagram_demo/view/reels.dart';
 import 'package:instagram_demo/view/search.dart';
@@ -48,11 +48,11 @@ class _BotomnavigationState extends State<Botomnavigation> {
             color: theme.textcolor,
           ),
           label: ''),
-      BottomNavigationBarItem(icon: profileicon(firebase), label: ''),
+      BottomNavigationBarItem(icon: profileimage(firebase), label: ''),
     ];
   }
 
-  Widget profileicon(FirebaseConnect firebase) {
+  Widget profileimage(FirebaseConnect firebase) {
     if (firebase.userdata?.url == null) {
       return FutureBuilder(
         future: firebase.getUserData(),
@@ -80,7 +80,7 @@ class _BotomnavigationState extends State<Botomnavigation> {
       searchpage(),
       Adddata(),
       Reels(),
-      profile(),
+      ProfilePage(),
     ];
 
     Themechange theme = Provider.of<Themechange>(context);
@@ -89,16 +89,23 @@ class _BotomnavigationState extends State<Botomnavigation> {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
             border: Border(top: BorderSide(color: Colors.grey.shade900))),
-        child: BottomNavigationBar(
-          currentIndex: pages.bottomSelectedIndex,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: theme.dark_baground,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: buildBottomNavBarItems(),
-          selectedIconTheme: IconThemeData(opacity: 1),
-          unselectedIconTheme: IconThemeData(opacity: 0.5),
-          onTap: (value) => pages.pageChanged(value),
+        child: Theme(
+          data: ThemeData(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+          ),
+          child: BottomNavigationBar(
+            currentIndex: pages.bottomSelectedIndex,
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: theme.dark_baground,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            items: buildBottomNavBarItems(),
+            selectedIconTheme: IconThemeData(opacity: 1),
+            unselectedIconTheme: IconThemeData(opacity: 0.5),
+            onTap: (value) => pages.pageChanged(value),
+            enableFeedback: false,
+          ),
         ),
       ),
     );
