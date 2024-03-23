@@ -54,7 +54,7 @@ class Widgets {
               borderRadius: BorderRadius.circular(6)),
           hintText: labeltext,
           hintStyle: TextStyle(
-            color: theme.textcolor,
+            color: Colors.grey[600],
           ),
         ),
       ),

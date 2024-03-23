@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../view/home.dart';
+import '../view/mainpage.dart';
 
 class Fire_auth {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -87,7 +88,7 @@ class Fire_auth {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => Botomnavigation()),
       );
     } catch (error) {
       if (error is PlatformException && error.code == 'network_error') {

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../utils/widgets.dart';
 
-class searchpage extends StatefulWidget {
-  const searchpage({super.key});
+class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
 
   @override
-  State<searchpage> createState() => _searchpageState();
+  State<SearchPage> createState() => _searchpageState();
 }
 
-class _searchpageState extends State<searchpage> {
+class _searchpageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     Widgets mywidgets = Widgets();

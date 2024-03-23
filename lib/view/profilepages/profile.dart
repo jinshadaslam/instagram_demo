@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../utils/widgets.dart';
 import '../../view_modal.dart/firebase_intraction.dart';
 import '../../view_modal.dart/theam_provider.dart';
+import '../add_profile_data.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -22,6 +23,16 @@ class ProfilePage extends StatelessWidget {
           'Profile',
           style: TextStyle(color: theme.textcolor),
         ),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Add_profile_data()),
+                );
+              },
+              child: Text('Edit profile'))
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,35 +126,6 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Expanded(child: TabBarDemo())
-          // Expanded(
-          //   child: GridView.builder(
-          //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //       crossAxisCount: 3,
-          //     ),
-          //     itemCount: 15,
-          //     itemBuilder: (context, index) {
-          //       return Image.network(
-          //         'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
-          //         fit: BoxFit.cover,
-          //         loadingBuilder: (BuildContext context, Widget child,
-          //             ImageChunkEvent? loadingProgress) {
-          //           if (loadingProgress == null) return child;
-          //           return Center(
-          //             child: CircularProgressIndicator(
-          //               value: loadingProgress.expectedTotalBytes != null
-          //                   ? loadingProgress.cumulativeBytesLoaded /
-          //                       loadingProgress.expectedTotalBytes!
-          //                   : null,
-          //             ),
-          //           );
-          //         },
-          //         errorBuilder: (context, error, stackTrace) {
-          //           return Text('fail');
-          //         },
-          //       );
-          //     },
-          //   ),
-          // ),
         ],
       ),
     );
@@ -182,9 +164,10 @@ class TabBarDemo extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: TabBar(
+            splashFactory: NoSplash.splashFactory,
             labelColor: theme.textcolor,
             indicatorColor: theme.textcolor,
-            dividerColor: Colors.grey,
+            dividerColor: Colors.grey.shade800,
             indicatorSize: TabBarIndicatorSize.tab,
             tabs: [
               Tab(icon: Icon(Icons.grid_on_sharp)),
@@ -197,12 +180,15 @@ class TabBarDemo extends StatelessWidget {
               Tab(icon: Icon(Icons.assignment_ind_outlined)),
             ],
           ),
-          body: const TabBarView(
-            children: [
-              posts(),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
+          body: Padding(
+            padding: const EdgeInsets.only(top: 3),
+            child: const TabBarView(
+              children: [
+                posts(),
+                Icon(Icons.directions_transit),
+                Icon(Icons.directions_bike),
+              ],
+            ),
           ),
         ),
       ),
